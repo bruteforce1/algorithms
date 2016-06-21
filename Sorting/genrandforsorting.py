@@ -13,7 +13,7 @@ class genrandforsorting:
                  minimum=0, 
                  maximum=10000, 
                  count=100, 
-                 filename='out.txt'):
+                 filename='in.txt'):
         """Initializes genrandforsorting class."""
         self.seed = seed
         self.min = minimum
