@@ -16,14 +16,23 @@ import os.path
 def merge(la, lb):
     """Merge function which handles the combining of subarrays."""
     lc = []
-    
+    while la and lb:
+        if la[0] > lb[0]:
+            lc.append(lb.pop(0))
+        else:
+            lc.append(la.pop(0))
+    while la:
+        lc.append(la.pop(0))
+    while lb:
+        lc.append(lb.pop(0))
+    return lc
 
 def mergesort(mylist):
     """Merge sort function, handles divide and conquer."""
     if (len(mylist) <= 1):
         return mylist
-    a = mergesort(mylist[:math.floor(len(mylist)/2)])
-    b = mergesort(mylist[math.floor(len(mylist)/2)+1:])
+    a = mergesort(mylist[:int(math.floor(len(mylist)/2))])
+    b = mergesort(mylist[int(math.floor(len(mylist)/2)):])
     return merge(a,b)
 
 def main(inputfile, outputfile):
@@ -40,6 +49,7 @@ def main(inputfile, outputfile):
     with open(outputfile, 'w') as o:
         for num in sortlist:
             o.write(str(num))
+            o.write('\n')
 
     return 0
 
